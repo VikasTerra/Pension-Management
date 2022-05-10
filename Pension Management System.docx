@@ -1,0 +1,38 @@
+Pojos
+ProcessPensionInput --   String adhar_number
+PensionAmount --     float pension_amount, float bankServiceCharge 
+PensionerDetail – String name, Date dob, String pan, float salaryEarned, float allowances, PensionType pensionType, BankDetails bankDetails,
+
+PensionType – {SELF, FAMILY}
+
+BankDetails – String bankName, String accountNumber, BankType banktype.
+
+Microservices
+1.	Process Pension Service
+2.	Pensioner detail Service – 
+GET -- http://localhost:8080/PMS/PensionDetailsByAadhaar/{adhar_no}
+3.	Authorization Service  
+POST -- http://localhost:8080/PMS/auth/signup
+ReqBody- 
+{
+“username”:”Vikas”,
+“email”:Vikas@gmail.com,
+“password”:”pass123”
+}
+Response –
+{
+	“errorCode”:”0”,
+	“errorMessage”:” Suggessful”
+}
+
+POST -- http://localhost:8080/PMS/auth/signin
+ReqBody- 
+{
+“username”:”Vikas”,
+“password”:” pass123”
+}
+
+4.	Pension Management – ProcessPensionService
+POST -- http://localhost:8080/PMS/ProcessPension
+ReqBody --{“adar_number”:” xyz”}
+Response – {“pension_amount”:”0.00f”,” bankServiceCharge”:”0.00f”}
